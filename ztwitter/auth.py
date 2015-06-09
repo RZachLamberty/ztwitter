@@ -46,7 +46,7 @@ class ZtwitterAuthError(Exception):
     pass
 
 
-def load_auth_from_yaml(f):
+def load_auth_yaml(f):
     """ load a yaml file that should contain keys 'key' and 'secret'. """
     with open(f, 'rb') as fIn:
         auth = yaml.load(fIn)
@@ -120,3 +120,9 @@ def get_oauth(key, secret, tokenUrl=REQUEST_TOKEN_URL, authUrl=AUTHORIZE_URL,
         resource_owner_secret=oathSecret
     )
     return oauth
+
+
+def get_oauth_from_file(f, tokenUrl=REQUEST_TOKEN_URL, authUrl=AUTHORIZE_URL,
+                        accessUrl=ACCESS_TOKEN_URL):
+    d = load_auth_yaml(f)
+    return get_oauth(d['key'], d['secret'], tokenUrl, authUrl, accessUrl)
