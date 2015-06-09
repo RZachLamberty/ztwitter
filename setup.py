@@ -9,7 +9,7 @@ setup(
     author='Zach Lamberty',
     author_email='r.zach.lamberty@gmail.com',
     url='https://github.com/RZachLamberty/',
-    packages=['zachlog'],
+    packages=['ztwitter'],
     install_requires=[
         'pyyaml',
         'requests',
