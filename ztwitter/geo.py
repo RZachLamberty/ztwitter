@@ -15,6 +15,7 @@ Usage:
 """
 
 import logging
+import requests
 
 import constants
 
@@ -23,7 +24,7 @@ import constants
 #   Module Constants            #
 # ----------------------------- #
 
-LAT_LONG = (
+LAT_LNG = (
     "https://api.twitter.com/1.1/geo/reverse_geocode.json"
     "?lat={lat:}&long={lng:}&granularity=city"
 )
@@ -53,7 +54,7 @@ def tid_from_rev_geocode_json(json):
     return json['result']['places'][0]['id']
 
 
-def tid_from_lat_long(auth, lat, lng, latLngUrl=LAT_LONG):
+def tid_from_lat_lng(auth, lat, lng, latLngUrl=LAT_LNG):
     """ doc """
     return tid_from_rev_geocode_json(
         requests.get(
